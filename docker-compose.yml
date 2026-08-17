@@ -30,5 +30,20 @@ services:
       db:
         condition: service_healthy
 
+  frontend:
+    image: node:24-slim
+    container_name: todo_frontend
+    working_dir: /app
+    ports:
+      - "3000:3000"
+    volumes:
+      - ./todo-app-frontend:/app
+    environment:
+      - WATCHPACK_POLLING=true
+      - HOST=0.0.0.0
+    command: npm start
+    depends_on:
+      - backend
+
 volumes:
   todo_db_data:
