@@ -1,5 +1,5 @@
 from app.datasource.repositories.category_repository import CategoryRepository
-from app.domain.schemas.category import CategoryCreateSchema, CategorySchema
+from app.web.schemas.category import CategoryCreateSchema, CategorySchema
 from sqlalchemy.orm import Session
 
 
@@ -12,7 +12,7 @@ class CategoryService:
         self.category_repository = CategoryRepository(db)
 
     def list_categories(self) -> list[CategorySchema]:
-        categories_orm = self.category_repository.get_all()
+        categories_orm = self.category_repository.get_all()  # noqa: F821
         return [CategorySchema.model_validate(category) for category in categories_orm]
 
     def create_category(self, category_create: CategoryCreateSchema) -> CategorySchema:

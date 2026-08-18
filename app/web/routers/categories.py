@@ -1,10 +1,10 @@
-from app.datasource.services.category_service import CategoryService
-from app.domain.schemas.category import (
+from app.domain.services.category_service import CategoryService
+from app.web.dependencies import get_category_service
+from app.web.schemas.category import (
     CategoryCreateSchema,
     CategorySchema,
     CategoryUpdateSchema,
 )
-from app.web.dependencies import get_category_service
 from fastapi import APIRouter, Depends, HTTPException, status
 
 router = APIRouter(prefix="/categories")

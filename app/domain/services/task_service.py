@@ -1,5 +1,5 @@
 from app.datasource.repositories.task_repository import TaskRepository
-from app.domain.schemas.task import TaskCreateSchema, TaskSchema, TaskUpdateSchema
+from app.web.schemas.task import TaskCreateSchema, TaskSchema, TaskUpdateSchema
 from sqlalchemy.orm import Session
 
 
@@ -11,7 +11,7 @@ class TaskService:
     def __init__(self, db: Session):
         self.db = db
         self.task_repository = TaskRepository(db)
-
+  # noqa: F821
     def list_tasks(self) -> list[TaskSchema]:
         tasks_orm = self.task_repository.get_all()
         return [TaskSchema.model_validate(task) for task in tasks_orm]

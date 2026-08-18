@@ -1,6 +1,6 @@
 from app.datasource.database.session import get_db
-from app.datasource.services.category_service import CategoryService
-from app.datasource.services.task_service import TaskService
+from app.domain.services.category_service import CategoryService
+from app.domain.services.task_service import TaskService
 from fastapi import Depends
 from sqlalchemy.orm import Session
 
