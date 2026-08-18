@@ -3,7 +3,7 @@ from app.web.dependencies import get_task_service
 from app.web.schemas.task import TaskCreateSchema, TaskSchema, TaskUpdateSchema
 from fastapi import APIRouter, Depends, HTTPException, status
 
-router = APIRouter(prefix="/tasks")
+router = APIRouter(prefix="/tasks", tags=["tasks"])
 
 
 @router.get("")
